@@ -9,18 +9,19 @@ function dirLeaf(dir)
     if (index(filename,'.json') != -1)
     {
       let filepath = dir + '/' + filename;
-      if (stat(filepath).type == "file")
+      if (stat(filepath)?.type == "file")
       {
         let schema = json(readfile(filepath));
         let schemaName = replace(filename,".json", "");
         combinedSchema[schemaName] = schema;
       }
+      else if (stat(filepath)?.type == "file") 
     }
   }
   return combinedSchema;
 }
 
-rootDir = '/usr/share/aurora/schema';
+let rootDir = '/usr/share/aurora/schema';
 let combo = dirLeaf(rootDir);
 let str = sprintf("%J", combo);
 print(str, "\n");
