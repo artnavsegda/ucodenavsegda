@@ -1,10 +1,12 @@
 import { lsdir, readfile } from 'fs';
 
-let fileList = lsdir('./');
+dir = '/usr/share/aurora/schema';
+let fileList = lsdir(dir);
 
 for (filename in fileList) {
-  if (index(filename,'.uc') != -1)
+  print(filename);
+  if (index(filename,'.json') != -1)
   {
-    print(readfile(filename));
+    print(readfile(dir + '/' + filename));
   }
 }
