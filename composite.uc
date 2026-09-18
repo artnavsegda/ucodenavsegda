@@ -1,12 +1,15 @@
-import { lsdir, readfile } from 'fs';
+import { stat, lsdir, readfile } from 'fs';
 
 dir = '/usr/share/aurora/schema';
 let fileList = lsdir(dir);
 
 for (filename in fileList) {
-  print(filename);
   if (index(filename,'.json') != -1)
   {
-    print(readfile(dir + '/' + filename));
+    let filepath = dir + '/' + filename;
+    if (stat(filepath).type == "file")
+    {
+	print(readfile(filepath));
+    }
   }
 }
