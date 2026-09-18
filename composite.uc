@@ -2,7 +2,7 @@ import { stat, lsdir, readfile } from 'fs';
 
 function dirLeaf(dir)
 {
-  let schema = {};
+  let combinedSchema = {};
   let fileList = lsdir(dir);
 
   for (filename in fileList) {
@@ -16,9 +16,10 @@ function dirLeaf(dir)
       }
     }
   }
-  return schema;
+  return combinedSchema;
 }
 
 rootDir = '/usr/share/aurora/schema';
 let combo = dirLeaf(rootDir);
-
+let str = sprintf("%J", combo);
+print(str, "\n");
