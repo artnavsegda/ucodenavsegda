@@ -9,7 +9,7 @@ for (filename in fileList) {
     let filepath = dir + '/' + filename;
     if (stat(filepath).type == "file")
     {
-	print(readfile(filepath));
+      let schema = json(readfile(filepath));
     }
   }
 }
