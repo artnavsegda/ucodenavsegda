@@ -12,7 +12,8 @@ function dirLeaf(dir)
       if (stat(filepath).type == "file")
       {
         let schema = json(readfile(filepath));
-        combinedSchema[filename] = schema;
+        let schemaName = replace(filename,".json", "");
+        combinedSchema[schemaName] = schema;
       }
     }
   }
