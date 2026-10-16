@@ -7,8 +7,12 @@ let sock = socket.connect('127.0.0.1', 65500, {
 });
 
 let data = {
-	'type': ARGV[1],
-	'data': ARGV[3] || {},
-	'path': ARGV[2] || '/',
-	'user': ARGV[4] || 'admin',
+	'type': ARGV[0],
+	'data': ARGV[2] || {},
+	'path': ARGV[1] || '/',
+	'user': ARGV[3] || 'admin',
 };
+
+let pretty = sprintf("%#J", data); 
+
+print(pretty);
