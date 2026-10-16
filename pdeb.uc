@@ -42,7 +42,7 @@ let data = {
 	'user': ARGV[3] || 'admin',
 };
 
-let pretty = sprintf("%#J", data); 
+let pretty = sprintf("%#J\n", data); 
 
 print(pretty);
 
@@ -51,8 +51,13 @@ let sock = socket.connect('127.0.0.1', 65500, {
 	socktype: socket.SOCK_STREAM
 });
 
+if(!sock) {
+	print("Socket error\n");
+	exit(1)
+}
+
 sock_send(sock, data);
 data = sock_recv(sock);
-pretty = sprintf("%#J", data); 
+pretty = sprintf("%#J\n", data); 
 print(pretty);
 sock.close();
